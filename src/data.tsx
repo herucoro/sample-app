@@ -54,12 +54,12 @@ export function getData() {
         {
             header: '資材明細', colspan: 5, cells: [
                 { binding: 'merchandiseName', header: '商品名'},
-                { binding: 'quantity', header: '数量', colspan: 2},
+                { binding: 'quantity', header: '数量', colspan: 2, width: 140},
                 { binding: 'price', header: '単価'},
                 { binding: 'deliveryDate', header: '希望納期'},
-                { binding: 'manufacturerNumber', header: 'メーカー希望納期', width: 500},
-                { binding: 'unit.number', header: '単位数'},
-                { binding: 'unit.name', header: '単位名'},
+                { binding: 'manufacturerNumber', header: 'メーカー希望納期', width: 450},
+                { binding: 'unit.number', header: '単位数', width:70},
+                { binding: 'unit.name', header: '単位名', width:70}, 
                 { binding: 'total', header: '金額'},
                 { binding: 'usedDate', header: '使用日'}
             ]
