@@ -1,10 +1,8 @@
-export function getName(code: string) {
-    let name: string = ""
+import axios from "axios"
 
-    if (code === "_____") {
-        name = ""
-    } else {
-        name = "AAA"
-    }
-    return name
+export async function getName(code: string) {
+    const url = 'http://172.16.230.1:8080/employee'
+    
+    const response = await axios.get('http://172.16.230.1:8080/employee/' + code)
+    return response.data.userName
 }

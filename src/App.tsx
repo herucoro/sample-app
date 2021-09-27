@@ -15,7 +15,12 @@ function App() {
   const [orderName, setOrderName] = useState("")
   const [employeeCode, setEmployeeCode] = useState("")
   useEffect(() => {
-    setOrderName(getName(employeeCode))
+    const f = async() => {
+      console.log(orderName)
+      setOrderName(await getName(employeeCode))
+      
+    }
+    f()
   }, [employeeCode])
 
 // const codeChange = (e) =>{
@@ -41,7 +46,7 @@ function App() {
             <wjInput.InputDate id="orderdate" width="200"/>
 
             <label htmlFor="employeecode">依頼者</label>
-            <wjInput.InputMask id="employeecode" mask="00000" value={employeeCode} lostFocus={(e: any) => (setEmployeeCode(e.value), console.log(e.value))} />
+            <wjInput.InputMask id="employeecode" mask="00000" value={employeeCode} lostFocus={(e: any) => (setEmployeeCode(e.value))} />
             <label>{orderName}</label>
           </div>
           <div className="child3">
