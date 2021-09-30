@@ -7,6 +7,21 @@
   pointer-events: none;
 }
 
+/* append css */
+.wj-flexgrid .wj-cell {
+  height: 27px;
+  }
+
+.grid-parent {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.child1, .child2, .child3, .child4 {
+  border: 1px #000;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
