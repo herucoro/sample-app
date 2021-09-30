@@ -17,7 +17,13 @@ function App() {
   useEffect(() => {
     const f = async() => {
       console.log(orderName)
-      setOrderName(await getName(employeeCode))
+      await getName(employeeCode)
+            .then(response => {
+              setOrderName(response)
+            })
+            .catch(() => setOrderName(""))
+      // setOrderName(await getName(employeeCode)
+      //                     .then())
       
     }
     f()
