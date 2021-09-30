@@ -5,13 +5,18 @@ import '@grapecity/wijmo.styles/wijmo.css';
 import '@grapecity/wijmo.cultures/wijmo.culture.ja';
 import * as wjGrid from '@grapecity/wijmo.react.grid.multirow';
 import * as wjInput from '@grapecity/wijmo.react.input'
-import { getData } from './data';
 import { getName } from './name';
 import { Button } from '@material-ui/core';
 
-function App() {
-  const appData = getData()
+import { appDataType, getMaterial, IGetResponse } from './material';
 
+function App() {
+  // const appData = getData()
+  // const test = getMaterial()
+  const [appData, setAppData] = useState<appDataType>({
+    data: null,
+    lines: null,
+  })
   const [orderName, setOrderName] = useState("")
   const [employeeCode, setEmployeeCode] = useState("")
   useEffect(() => {
@@ -22,12 +27,18 @@ function App() {
               setOrderName(response)
             })
             .catch(() => setOrderName(""))
-      // setOrderName(await getName(employeeCode)
-      //                     .then())
-      
     }
     f()
   }, [employeeCode])
+  useEffect(() => {
+    const f = async() => {
+      await getMaterial()
+            .then(res => {
+              setAppData(res)
+            })
+    }    
+    f()
+  },[])
 
 // const codeChange = (e) =>{
 //   setEmployeeCode(() => e.target.value)
@@ -63,7 +74,7 @@ function App() {
         </form>
       </div>
       <div>
-        <wjGrid.MultiRow itemsSource={appData.data}  layoutDefinition={appData.lines} allowAddNew={true} allowDelete={true}
+        <wjGrid.MultiRow itemsSource={appData.data}  layoutDefinition={appData.lines}
           allowDragging={3}>
         </wjGrid.MultiRow>        
       </div>
